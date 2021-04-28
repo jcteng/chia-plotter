@@ -1,7 +1,11 @@
-let chia = require("./lib/chia");
+let chia = require("../lib/chia");
 const colors = require("colors");
 const readline = require("readline");
 const moment = require("moment");
+
+const FINISHED_LOG_LINES = 2626; // 128
+// const FINISHED_LOG_LINES_64 = 1379; // 64
+// const FINISHED_LOG_LINES_32 = 754; // 32
 async function preStartCli() {
   console.log("chia cert path is", chia.getChiaStoragePath(""));
 
@@ -71,7 +75,8 @@ const commands = {
       queue
         .map((task) => {
           let final = { ...task, manager: "chia" };
-          final.log = final.log ? final.log.length : 0;
+          final.progress = final.log ? (final.log.split("\n").length*100/FINISHED_LOG_LINES).toFixed(2)+'%' : 0;
+          final.log = final.log ?final.log.length:0
           return final;
         })
         .sort((a, b) => a.state.localeCompare(b.state))

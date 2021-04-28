@@ -9,7 +9,8 @@ access chia service via websocket/cli/http RPC
 - [ ] wallet RPC api
 ### cli api
 - [x] version
-- [ ] create chia plot job with log storage
+- [ ] create chia plot job with log storage as plot job
+
 
 ### ws api
 - [x] 用于获取daemon中的plotting queue
@@ -28,6 +29,14 @@ log解析
 - [ ] Progress In phase
 - [ ] complete time In phase
 - [ ] cpu usage in phase
+- [ ] 解析.chia\mainnet\plotter
+- [ ]
+状态功能：
+- [ ] check is daemon running (via process)
+- [ ] check fullNode running(via process)
+- [ ] check harvester running(via process)
+- [ ] check wallet running (via process)
+- [ ] check farmer running (via process)
 
 
 ## 参考

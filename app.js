@@ -17,8 +17,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/fullnode', require('./routes/index'));
-app.use('/api/process', require('./routes/process'));
+app.use('/api/proxy/', require('./routes/proxy'));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -33,7 +33,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({success:false,message: err.message,code:err.status});
 });
+
 
 module.exports = app;
